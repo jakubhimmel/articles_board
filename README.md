@@ -184,7 +184,7 @@ Comment model
 | GET         | `/topics`                     |                              |                | 400          | Show all topics                                         |
 | GET         | `/topics/:id`                 | {id}                         |                |              | Show specific  topic |
 | GET         | `/article/:id`                 | {id}                         |                |              | Show specific  article |
-| PUT         | `/article/edit/:id`           | {name,img,text}           | 200            | 400          | edit article                                              |
+| PUT         | `/article/edit/:id`           | {name,img,text}               | 200            | 400          | edit article                                              |
 | DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400          | delete article                                             |                                    |
 | GET         | `/user/:id`                   | {id}                         |                |              | show specific user                                                                                         |
 | PUT         | `/user/edit/:id`              | {password,img}                   | 201            | 400          | edit user info                                                   
