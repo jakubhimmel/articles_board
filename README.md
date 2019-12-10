@@ -38,20 +38,20 @@ This app lets users write, like and comment articles. Users can search for artci
 ## Routes (React App)
 | Path                      | Component            | Permissions | Behavior                                                     |
 | ------------------------- | -------------------- | ----------- | ------------------------------------------------------------ |
-| `/`                       | Homepage             | public      | Home page                                        |
-| `/auth/signup`            | SignupPage           | anon only   | Signup form, link to login, navigate to homepage after signup |
-| `/auth/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to homepage after login |
-| `/auth/logout`            | n/a                  | anon only   | Navigate to homepage after logout, expire session            |
-| `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              |
+| `/`                       | Homepage             | public      | Home page                                        
+| `/auth/signup`            | SignupPage           | anon only   | Signup form, link to login, navigate to homepage after signup 
+| `/auth/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to homepage after login 
+| `/auth/logout`            | n/a                  | anon only   | Navigate to homepage after logout, expire session            
+| `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              
 | `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic
 
-| `/searchResult`           | PlayersListPage      | public,user | List of articles by search                              |
+| `/searchResult/:search`   | Search reuslts       | public,user | List of articles by search                              |
 
-| `/article/:id`            | PlayersListPage      | public,user | Displaying an article 
+| `/article/:id`            | Article              | public,user | Displaying an article 
 |
-| `/profile/:user_id`       | PlayersListPage      | public,user | Displaying a user profile  
+| `/profile/:user_id`       | User page            | public,user | Displaying a user profile  
 |
-| `/article/create-new/:id` | PlayersDetailPage    | user only   |Displaying a page where  user  can wrtie a new article                                  |
+| `/article/create-new`     | Write asrticle page  | user only   | Displaying a page where  user  can wrtie a new article                                
                                                       
 
 ## Components
@@ -89,16 +89,25 @@ This app lets users write, like and comment articles. Users can search for artci
   - auth.logout()
   - auth.me()
   - auth.getUser() // synchronous
+  
 - Article Service
   - article.search()
   - article.detail(id)
   - article.create(id)
-  - tournament.delete(id)
   
 - User Service 
 
   - user.create(id)
   - user.edit(id)
+
+- Topic service
+  
+  -title
+  
+- Comments Service
+  -user  
+  -article  
+  -likes 
 
 <br>
 
@@ -172,21 +181,15 @@ Comment model
 | POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
 | POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET         | `/tournaments`                |                              |                | 400          | Show all tournaments                                         |
-| GET         | `/tournaments/:id`            | {id}                         |                |              | Show specific tournament                                     |
-| POST        | `/tournaments/add-tournament` | {}                           | 201            | 400          | Create and save a new tournament                             |
-| PUT         | `/tournaments/edit/:id`       | {name,img,players}           | 200            | 400          | edit tournament                                              |
-| DELETE      | `/tournaments/delete/:id`     | {id}                         | 201            | 400          | delete tournament                                            |
-| GET         | `/players`                    |                              |                | 400          | show players                                                 |
-| GET         | `/players/:id`                | {id}                         |                |              | show specific player                                         |
-| POST        | `/players/add-player`         | {name,img,tournamentId}      | 200            | 404          | add player                                                   |
-| PUT         | `/players/edit/:id`           | {name,img}                   | 201            | 400          | edit player                                                  |
-| DELETE      | `/players/delete/:id`         | {id}                         | 200            | 400          | delete player                                                |
-| GET         | `/games`                      | {}                           | 201            | 400          | show games                                                   |
-| GET         | `/games/:id`                  | {id,tournamentId}            |                |              | show specific game                                           |
-| POST        | `/games/add-game`             | {player1,player2,winner,img} |                |              | add game                                                     |
-| POST        | `/games/add-all-games`        |                              |                |              | add all games from a tournament. Gets a list of players and populates them via algorithm. |
-| PUT         | `/games/edit/:id`             | {winner,score}               |                |              | edit game                                                    |
+| GET         | `/topics`                     |                              |                | 400          | Show all topics                                         |
+| GET         | `/topics/:id`                 | {id}                         |                |              | Show specific  topic |
+| GET         | `/article/:id`                 | {id}                         |                |              | Show specific  article |
+| PUT         | `/article/edit/:id`           | {name,img,text}           | 200            | 400          | edit article                                              |
+| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400          | delete article                                             |                                    |
+| GET         | `/user/:id`                   | {id}                         |                |              | show specific user                                                                                         |
+| PUT         | `/user/edit/:id`              | {password,img}                   | 201            | 400          | edit user info                                                   
+| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | delete user                                                                                               |
+| GET         | `/comment/delete/:id`                  | {id}            |                |              | show specific game                                           |                                              |
 
 
 <br>
@@ -196,8 +199,7 @@ Comment model
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com/b/PBqtkUFX/curasan) 
-or picture of your physical board
+[Link to your trello board](https://trello.com/b/VSvLMSiz/project3) 
 
 ### Git
 
@@ -207,7 +209,7 @@ The url to your repository and to your deployed project
 
 [Server repository Link](https://github.com/screeeen/project-server)
 
-[Deployed App Link](http://heroku.com)
+[Deployed App Link]( ---- )
 
 ### Slides
 
