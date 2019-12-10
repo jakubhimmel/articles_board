@@ -1,1 +1,216 @@
-# articles_board
+# Article s board
+
+<br>
+
+## Description
+
+This app lets users write, like and comment articles. Users can search for artciles by name or topic. Users can comment on every article. Users can follow different users or topics. 
+
+## User Stories
+
+-  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
+-  **Signup:** As an anon I can sign up in the platform so that I can start playing into competition
+-  **Login:** As a user I can login to the platform so that I can play competitions
+-  **Logout:** As a user I can logout from the platform so no one else can use i
+-  **Write an article** As a user I can write an article
+-  **Favourite an article** As a user I can ad and article to favourites
+-  **Upvote or downtvote an article** As a user I can ad and article to favourites
+-  **Comment an article** As a user I can ad and article to favourites
+-  **Follow  users** As a user I can follow a user. 
+-  **Search for articles by name** As a user I can edit a player profile to fit into the tournament view
+-  **Search for articles by topic** As a user I want to see the tournament table
+
+
+
+## Backlog
+
+-  **Follow  topics** As a user I can follow a specific topic.
+-  **Personolised homescreen** Loged in user screen displays personlised articles selection based on followed topics or users. 
+-  **Search result page** Searching for articles by topic. 
+-  **Tags** Add tags to every article.Users can search by tags.
+-  **Log in and Sign up page as a pop up page** Add tags to every article.Users can search by tags.
+
+<br>
+
+
+# Client / Frontend
+
+## Routes (React App)
+| Path                      | Component            | Permissions | Behavior                                                     |
+| ------------------------- | -------------------- | ----------- | ------------------------------------------------------------ |
+| `/`                       | Homepage             | public      | Home page                                        |
+| `/auth/signup`            | SignupPage           | anon only   | Signup form, link to login, navigate to homepage after signup |
+| `/auth/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to homepage after login |
+| `/auth/logout`            | n/a                  | anon only   | Navigate to homepage after logout, expire session            |
+| `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              |
+| `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic
+
+| `/searchResult`           | PlayersListPage      | public,user | List of articles by search                              |
+
+| `/article/:id`            | PlayersListPage      | public,user | Displaying an article 
+|
+| `/profile/:user_id`       | PlayersListPage      | public,user | Displaying a user profile  
+|
+| `/article/create-new/:id` | PlayersDetailPage    | user only   |Displaying a page where  user  can wrtie a new article                                  |
+                                                      
+
+## Components
+
+- HomePage
+
+- LoginPage
+
+- SignupPage
+
+- TopicsPage
+
+- SearchResultPage
+
+- ArticlePage
+
+- Write article page 
+
+- UserProfilePage
+
+- UserProfileSetingsPage
+
+- Navbar
+
+
+  
+
+ 
+
+## Services
+
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+  - auth.getUser() // synchronous
+- Article Service
+  - article.search()
+  - article.detail(id)
+  - article.create(id)
+  - tournament.delete(id)
+  
+- User Service 
+
+  - user.create(id)
+  - user.edit(id)
+
+<br>
+
+
+# Server / Backend
+
+
+## Models
+
+User model
+
+```javascript
+{
+  user_id: 
+  username: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  favorites: [article_id]
+  following: [user_id]
+}
+```
+
+
+
+Topic model
+
+```javascript
+ {
+   name: {type: String, required: true},
+   description: {type: String}
+ }
+```
+
+
+Article model
+
+```javascript
+{
+  article_id: {type: String, required: true},
+  article_name:
+  article_tag: 
+  img: {type: String},
+  text: 
+  comments: [comment_id]
+}
+```
+
+
+
+Comment model
+
+```javascript
+{
+  comment_id: 
+  user_id:
+  article_id:
+  comment_text: 
+  likes: [user_id]
+}
+```
+
+
+<br>
+
+
+## API Endpoints (backend routes)
+
+| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
+| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
+| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
+| GET         | `/tournaments`                |                              |                | 400          | Show all tournaments                                         |
+| GET         | `/tournaments/:id`            | {id}                         |                |              | Show specific tournament                                     |
+| POST        | `/tournaments/add-tournament` | {}                           | 201            | 400          | Create and save a new tournament                             |
+| PUT         | `/tournaments/edit/:id`       | {name,img,players}           | 200            | 400          | edit tournament                                              |
+| DELETE      | `/tournaments/delete/:id`     | {id}                         | 201            | 400          | delete tournament                                            |
+| GET         | `/players`                    |                              |                | 400          | show players                                                 |
+| GET         | `/players/:id`                | {id}                         |                |              | show specific player                                         |
+| POST        | `/players/add-player`         | {name,img,tournamentId}      | 200            | 404          | add player                                                   |
+| PUT         | `/players/edit/:id`           | {name,img}                   | 201            | 400          | edit player                                                  |
+| DELETE      | `/players/delete/:id`         | {id}                         | 200            | 400          | delete player                                                |
+| GET         | `/games`                      | {}                           | 201            | 400          | show games                                                   |
+| GET         | `/games/:id`                  | {id,tournamentId}            |                |              | show specific game                                           |
+| POST        | `/games/add-game`             | {player1,player2,winner,img} |                |              | add game                                                     |
+| POST        | `/games/add-all-games`        |                              |                |              | add all games from a tournament. Gets a list of players and populates them via algorithm. |
+| PUT         | `/games/edit/:id`             | {winner,score}               |                |              | edit game                                                    |
+
+
+<br>
+
+
+## Links
+
+### Trello/Kanban
+
+[Link to your trello board](https://trello.com/b/PBqtkUFX/curasan) 
+or picture of your physical board
+
+### Git
+
+The url to your repository and to your deployed project
+
+[Client repository Link](https://github.com/screeeen/project-client)
+
+[Server repository Link](https://github.com/screeeen/project-server)
+
+[Deployed App Link](http://heroku.com)
+
+### Slides
+
+The url to your presentation slides
+
+[Slides Link](http://slides.com)
