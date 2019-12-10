@@ -45,7 +45,7 @@ This app lets users write, like and comment articles. Users can search for artci
 | `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              
 | `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic
 
-| `/searchResult/:search`   | Search reuslts       | public,user | List of articles by search                              
+ `/searchResult/:search`   | Search reuslts       | public,user | List of articles by search                              
 
 | `/article/:id`            | Article              | public,user | Displaying an article 
 |
