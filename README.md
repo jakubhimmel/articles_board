@@ -205,7 +205,7 @@ Comment model
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/screeeen/project-client)
+[Client repository Link](https://github.com/jakubhimmel/articles_board)
 
 [Server repository Link](https://github.com/screeeen/project-server)
 
