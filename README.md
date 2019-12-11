@@ -148,7 +148,6 @@ Article model
 {
   article_id: {type: String, required: true},
   article_name:
-  article_tag: 
   img: {type: String},
   text: 
   comments: [comment_id]
