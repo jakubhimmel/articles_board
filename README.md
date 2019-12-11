@@ -45,13 +45,15 @@ This app lets users write, like and comment articles. Users can search for artci
 | `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              
 | `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic
 
-| `/searchResult/:search`   | Search reuslts       | public,user | List of articles by search                              
+| `/search-result/:search`  | Search reuslts       | public,user | List of articles by search                              
 
 | `/article/:id`            | Article              | public,user | Displaying an article 
 |
 | `/profile/:user_id`       | User page            | public,user | Displaying a user profile  
 |
-| `/article/create-new`     | Write asrticle page  | user only   | Displaying a page where  user  can wrtie a new article                                
+| `/article/settings/:id` | Write asrticle page    | user only   | Displaying a page where  user  can wrtie a new article   
+
+| `/article/create-new/:id` | Write asrticle page  | user only   | Displaying a page where  user  can wrtie a new article                                
                                                       
 
 ## Components
@@ -181,14 +183,15 @@ Comment model
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
 | POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
 | GET         | `/topics`                     |                              |                | 400          | Show all topics                                         |
-| GET         | `/topics/:id`                 | {id}                         |                |              | Show specific  topic |
-| GET         | `/article/:id`                 | {id}                         |                |              | Show specific  article |
-| PUT         | `/article/edit/:id`           | {name,img,text}               | 200            | 400          | edit article                                              |
-| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400          | delete article                                             |                                    |
-| GET         | `/user/:id`                   | {id}                         |                |              | show specific user                                                                                         |
-| PUT         | `/user/edit/:id`              | {password,img}                   | 201            | 400          | edit user info                                                   
-| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | delete user                                                                                               |
-| GET         | `/comment/delete/:id`                  | {id}            |                |              | show specific game                                           |                                              |
+| GET         | `/topics/:id`                 | {id}                         |                |               | Show specific  topic |
+| GET         | `/article/:id`                 | {id}                        |                |               | Show specific  article |
+| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400           | delete article                                             |                                         |
+| GET         | `/user/:id`                   | {id}                         |                |               | show specific user                                                                                          |
+| PUT         | `/user/settings/:id`           | {password,img}               | 201            | 400          | edit user info                                                   
+| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | delete user                                                                                               
+| GET         | `/comment/:id`                  | {id}                        |                |               | show specific game  
+
+| DELETE      | `/comment/delete/:id`           | {id}                        |                |               | show specific game                                              
 
 
 <br>
