@@ -185,13 +185,13 @@ Comment model
 | GET         | `/topics`                     |                              |                | 400          | Show all topics                                         |
 | GET         | `/topics/:id`                 | {id}                         |                |               | Show specific  topic |
 | GET         | `/article/:id`                 | {id}                        |                |               | Show specific  article |
-| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400           | delete article                                             |                                         |
-| GET         | `/user/:id`                   | {id}                         |                |               | show specific user                                                                                          |
-| PUT         | `/user/settings/:id`           | {password,img}               | 201            | 400          | edit user info                                                   
-| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | delete user                                                                                               
-| GET         | `/comment/:id`                  | {id}                        |                |               | show specific game  
+| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400           | Delete article                                             |                                         |
+| GET         | `/user/:id`                   | {id}                         |                |               | Show specific user                                                                                          |
+| PUT         | `/user/settings/:id`           | {password,img}               | 201            | 400          | Edit user info                                                   
+| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | Delete user                                                                                               
+| GET         | `/comment/:id`                  | {id}                        |                |               | Show specific game  
 
-| DELETE      | `/comment/delete/:id`           | {id}                        |                |               | show specific game                                              
+| DELETE      | `/comment/delete/:id`           | {id}                        |                |               | Show specific game                                              
 
 
 <br>
