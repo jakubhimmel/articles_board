@@ -6,29 +6,58 @@ class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
-      <div
+      <div>
+       <div 
         style={{ borderRadius: '5px', padding: '20px', background: '#686de0' }}>
         {isLoggedin ? (
-          <div>
+          <div className="navbar">
+            <div>
             <p>username: {user.username}</p>
             <button onClick={logout}>Logout</button>
+            </div>
+
+            <div className='navbar-menu'>
+            <Link to="/homepage">
+              <button>Home</button>
+            </Link>
+
+            <Link to="/profile">
+              <button>Profile</button>
+            </Link>
+            
+            </div>
           </div>
         ) : (
-          <div>
-            <Link to="/login">
+          <div className = 'navbar'>
+          <div className="is-logged-in">
+            <Link to="/auth/login">
               {' '}
               <button>Login</button>{' '}
             </Link>
             <br />
-            <Link to="/signup">
+            <Link to="/auth/signup">
               {' '}
               <button>Signup</button>{' '}
             </Link>
+            <br/>
+            </div>
+
+           <div className='navbar-menu'>
+            <Link to="/homepage">
+              <button>Home</button>
+            </Link>
+
+            <Link to="/profile">
+              <button>Profile</button>
+            </Link>
+            </div>
+           
           </div>
         )}
       </div>
+      </div>
     );
-  }
-}
+  }}
+    
 
 export default withAuth(Navbar);
