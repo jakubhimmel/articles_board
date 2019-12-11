@@ -16,9 +16,8 @@ This app lets users write, like and comment articles. Users can search for artci
 -  **Favourite an article** As a user I can ad and article to favourites
 -  **Upvote or downtvote an article** As a user I can ad and article to favourites
 -  **Comment an article** As a user I can ad and article to favourites
--  **Follow  users** As a user I can follow a user. 
 -  **Search for articles by name** As a user I can edit a player profile to fit into the tournament view
--  **Search for articles by topic** As a user I want to see the tournament table
+
 
 
 
@@ -29,6 +28,8 @@ This app lets users write, like and comment articles. Users can search for artci
 -  **Search result page** Searching for articles by topic. 
 -  **Tags** Add tags to every article.Users can search by tags.
 -  **Log in and Sign up page as a pop up page** Add tags to every article.Users can search by tags.
+-  **Search for articles by topic** As a user I want to see the tournament table.
+-  **Follow  users** As a user I can follow a user.
 
 <br>
 
@@ -43,15 +44,15 @@ This app lets users write, like and comment articles. Users can search for artci
 | `/auth/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to homepage after login 
 | `/auth/logout`            | n/a                  | anon only   | Navigate to homepage after logout, expire session            
 | `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              
-| `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic
+| `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic  
 
-| `/search-result/:search`  | Search reuslts       | public,user | List of articles by search                              
+| `/search-result/:search`  | Search reuslts       | public,user | List of articles by search    
 
-| `/article/:id`            | Article              | public,user | Displaying an article 
-|
+| `/article/:id`            | Article              | public,user | Displaying an article    
+
 | `/profile/:user_id`       | User page            | public,user | Displaying a user profile  
-|
-| `/article/settings/:id` | Write asrticle page    | user only   | Displaying a page where  user  can wrtie a new article   
+
+| `/article/settings/:id` | Write asrticle page    | user only   | Displaying a page where  user  can wrtie a new article
 
 | `/article/create-new/:id` | Write asrticle page  | user only   | Displaying a page where  user  can wrtie a new article                                
                                                       
@@ -93,23 +94,22 @@ This app lets users write, like and comment articles. Users can search for artci
   - auth.getUser() // synchronous
   
 - Article Service
-  - article.search()
+  - article.search(params)
   - article.detail(id)
-  - article.create(id)
+  - article.create()
   
 - User Service 
 
-  - user.create(id)
+  - user.create()
   - user.edit(id)
-
-- Topic service
-  
-  -title
+  - user.getProfile()
   
 - Comments Service
-  -user  
-  -article  
-  -likes 
+
+  - comment.get(articleId)  
+  - comment.create()  
+  - comment.delete(id) 
+
 
 <br>
 
@@ -149,10 +149,10 @@ Article model
 ```javascript
 {
   article_id: {type: String, required: true},
-  article_name:
+  article_name: {type: String}
   img: {type: String},
-  text: 
-  comments: [comment_id]
+  text: {type: String}
+  comments: [comment_id] //// obj id
 }
 ```
 
@@ -166,7 +166,7 @@ Comment model
   user_id:
   article_id:
   comment_text: 
-  likes: [user_id]
+  likes: [user_id] //// obj id
 }
 ```
 
@@ -181,17 +181,17 @@ Comment model
 | GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
 | POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET         | `/topics`                     |                              |                | 400          | Show all topics                                         |
-| GET         | `/topics/:id`                 | {id}                         |                |               | Show specific  topic |
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                                                                 |
 | GET         | `/article/:id`                 | {id}                        |                |               | Show specific  article |
-| DELETE      | `/article/delete/:id`         | {id}                         | 201            | 400           | Delete article                                             |                                         |
+| POST         | `/article/create`                 | {content}                        |                |               | Show specific  article |
+| GET         | `/article/:topics`                 | {topic}                        |                |               | Show specific  article |
+| DELETE      | `/article/:id/delete`         | {id}                         | 201            | 400           | Delete article  | POST        | `/article/:id/commnet`         | {id,content}                         | 201            | 400           | Delete article                                             |                                         |
 | GET         | `/user/:id`                   | {id}                         |                |               | Show specific user                                                                                          |
-| PUT         | `/user/settings/:id`           | {password,img}               | 201            | 400          | Edit user info                                                   
-| DELETE      | `/user/delete/:id`             | {id}                         | 200            | 400          | Delete user                                                                                               
-| GET         | `/comment/:id`                  | {id}                        |                |               | Show specific game  
+| PUT         | `/user/:id/settings`           | {password,img}               | 201            | 400          | Edit user info                                                   
+| DELETE      | `/user/:id/delete`             | {id}                         | 200            | 400          | Delete user                                                                                                
 
-| DELETE      | `/comment/delete/:id`           | {id}                        |                |               | Show specific game                                              
+| DELETE      | `/comment/:id/delete`           | {id}                        |                |               | Show specific game 
+| PUT         | `/comment/:id/edit`           | {id}                        |                |               | Show specific game 
 
 
 <br>
