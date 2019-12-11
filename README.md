@@ -207,7 +207,7 @@ The url to your repository and to your deployed project
 
 [Client repository Link](https://github.com/jakubhimmel/articles_board)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/jakubhimmel/articles_board_backend)
 
 [Deployed App Link]( ---- )
 
@@ -215,4 +215,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link]( --- )
