@@ -1,68 +1,220 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Article s board
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+This app lets users write, like and comment articles. Users can search for artciles by name or topic. Users can comment on every article. Users can follow different users or topics. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Stories
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
+-  **Signup:** As an anon I can sign up in the platform so that I can start playing into competition
+-  **Login:** As a user I can login to the platform so that I can play competitions
+-  **Logout:** As a user I can logout from the platform so no one else can use i
+-  **Write an article** As a user I can write an article
+-  **Favourite an article** As a user I can ad and article to favourites
+-  **Upvote or downtvote an article** As a user I can ad and article to favourites
+-  **Comment an article** As a user I can ad and article to favourites
+-  **Search for articles by name** As a user I can edit a player profile to fit into the tournament view
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Backlog
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+-  **Follow  topics** As a user I can follow a specific topic.
+-  **Personolised homescreen** Loged in user screen displays personlised articles selection based on followed topics or users. 
+-  **Search result page** Searching for articles by topic. 
+-  **Tags** Add tags to every article.Users can search by tags.
+-  **Log in and Sign up page as a pop up page** Add tags to every article.Users can search by tags.
+-  **Search for articles by topic** As a user I want to see the tournament table.
+-  **Follow  users** As a user I can follow a user.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Client / Frontend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Routes (React App)
+| Path                      | Component            | Permissions | Behavior                                                     |
+| ------------------------- | -------------------- | ----------- | ------------------------------------------------------------ |
+| `/`                       | Homepage             | public      | Home page                                        
+| `/auth/signup`            | SignupPage           | anon only   | Signup form, link to login, navigate to homepage after signup 
+| `/auth/login`             | LoginPage            | anon only   | Login form, link to signup, navigate to homepage after login 
+| `/auth/logout`            | n/a                  | anon only   | Navigate to homepage after logout, expire session            
+| `/homepage   `            | Homepage             | public,user | Show  search bar and topics list                              
+| `/topics/:topic_id`       | Topics Listing       | public,user | List of articles by topic  
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| `/search-result/:search`  | Search reuslts       | public,user | List of articles by search    
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| `/article/:id`            | Article              | public,user | Displaying an article    
 
-## Learn More
+| `/profile/:user_id`       | User page            | public,user | Displaying a user profile  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| `/article/settings/:id` | Write asrticle page    | user only   | Displaying a page where  user  can wrtie a new article
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| `/article/create-new/:id` | Write asrticle page  | user only   | Displaying a page where  user  can wrtie a new article                                
+                                                      
 
-### Code Splitting
+## Components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- HomePage
 
-### Analyzing the Bundle Size
+- LoginPage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- SignupPage
 
-### Making a Progressive Web App
+- TopicsPage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- SearchResultPage
 
-### Advanced Configuration
+- ArticlePage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Write article page 
 
-### Deployment
+- UserProfilePage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- UserProfileSetingsPage
 
-### `npm run build` fails to minify
+- Navbar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+  
+
+ 
+
+## Services
+
+- Auth Service
+  - auth.login(user)
+  - auth.signup(user)
+  - auth.logout()
+  - auth.me()
+  - auth.getUser() // synchronous
+  
+- Article Service
+  - article.search(params)
+  - article.detail(id)
+  - article.create()
+  
+- User Service 
+
+  - user.create()
+  - user.edit(id)
+  - user.getProfile()
+  
+- Comments Service
+
+  - comment.get(articleId)  
+  - comment.create()  
+  - comment.delete(id) 
+
+
+<br>
+
+
+# Server / Backend
+
+
+## Models
+
+User model
+
+```javascript
+{
+  user_id: 
+  username: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  favorites: [article_id]
+  following: [user_id]
+}
+```
+
+
+
+Topic model
+
+```javascript
+ {
+   name: {type: String, required: true},
+   description: {type: String}
+ }
+```
+
+
+Article model
+
+```javascript
+{
+  article_id: {type: String, required: true},
+  article_name: {type: String}
+  img: {type: String},
+  text: {type: String}
+  comments: [comment_id] //// obj id
+}
+```
+
+
+
+Comment model
+
+```javascript
+{
+  comment_id: 
+  user_id:
+  article_id:
+  comment_text: 
+  likes: [user_id] //// obj id
+}
+```
+
+
+<br>
+
+
+## API Endpoints (backend routes)
+
+| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
+| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
+| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
+| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                                                                 |
+| GET         | `/article/:id`                 | {id}                        |                |               | Show specific  article |
+| POST         | `/article/create`                 | {content}                        |                |               | Show specific  article |
+| GET         | `/article/:topics`                 | {topic}                        |                |               | Show specific  article |
+| DELETE      | `/article/:id/delete`         | {id}                         | 201            | 400           | Delete article  | POST        | `/article/:id/commnet`         | {id,content}                         | 201            | 400           | Delete article                                             |                                         |
+| GET         | `/user/:id`                   | {id}                         |                |               | Show specific user                                                                                          |
+| PUT         | `/user/:id/settings`           | {password,img}               | 201            | 400          | Edit user info                                                   
+| DELETE      | `/user/:id/delete`             | {id}                         | 200            | 400          | Delete user                                                                                                
+
+| DELETE      | `/comment/:id/delete`           | {id}                        |                |               | Show specific game 
+| PUT         | `/comment/:id/edit`           | {id}                        |                |               | Show specific game 
+
+
+<br>
+
+
+## Links
+
+### Trello/Kanban
+
+[Link to your trello board](https://trello.com/b/VSvLMSiz/project3) 
+
+### Git
+
+The url to your repository and to your deployed project
+
+[Client repository Link](https://github.com/jakubhimmel/articles_board)
+
+[Server repository Link](https://github.com/jakubhimmel/articles_board_backend)
+
+[Deployed App Link]( ---- )
+
+### Slides
+
+The url to your presentation slides
+
+[Slides Link]( --- )
