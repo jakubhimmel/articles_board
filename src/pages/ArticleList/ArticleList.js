@@ -5,16 +5,22 @@ import React, { Component } from 'react'
 
 export default class ArticleList extends Component {
     state = {
-        articleList: null
+        articleList: []
 
     }
 componentDidMount( ) { 
-    const { name } = this.props.match.params
+    const { name }  = this.props.match.params
+    console.log(this.props);
     
-    articleService.articleByTopic( name ).then(res => {
-       console.log('article-list',res);
-       
-      })
+    
+    articleService.articleByTopic( name ).then(res => { 
+
+        console.log('article-list', res);
+
+
+        this.setState( { articleList:res } )
+
+    })
     }
     
     render() {
@@ -22,6 +28,7 @@ componentDidMount( ) {
         return (
             <div>
                         <p> {this.state.articleList} </p>
+                        
                     </div>
                 )
                 

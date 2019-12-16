@@ -3,16 +3,19 @@ import axios from 'axios';
 class Article {
     constructor() {
         this.article = axios.create({
-            baseURL: 'http://localhost:5000/articles',
+            baseURL: process.env.REACT_APP_API_URL + '/articles',
             withCredentials: true,
         });
     }
 
     articleByTopic( name ) {
         
-        return this.article.get(`/topic/${name}`).then(response => response.data);
+        return this.article.get(`/topics/${name}`).then(response => response.data);
+        
     }
+
 }
+
 
 const articleService = new Article();
 
