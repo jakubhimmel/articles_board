@@ -11,6 +11,7 @@ import Homepage from './components/Homepage';
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './components/Profile';
+import ArticleList from './pages/ArticleList/ArticleList';
 
 
 class App extends Component {
@@ -22,6 +23,8 @@ class App extends Component {
         <Switch>
         <Route exact path="/homepage" component={Homepage} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/articles/:name" component={ArticleList} />
+
 
           <AnonRoute exact path="/auth/signup" component={Signup} />
           <AnonRoute exact path="/auth/login" component={Login} />

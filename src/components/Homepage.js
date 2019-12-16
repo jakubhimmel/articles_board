@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withAuth } from '../lib/AuthProvider';
+import Topics from '../components/Topics/Topics'
 
 
  class Homepage extends Component {
@@ -8,11 +8,12 @@ import { withAuth } from '../lib/AuthProvider';
 
         return (
             <div>
-            <h1>This is a H O M E  P A G E</h1>
-            {     
-                isLoggedin ? <h1> Ur logged in</h1>
-                            : <h1>Logged out</h1>
-            }
+            <p>Search bar:</p>
+            <p>Topics</p>
+            <Topics/>
+                 
+              
+            
                 
             </div>
         )
@@ -20,4 +21,4 @@ import { withAuth } from '../lib/AuthProvider';
 }
 
 
-export default withAuth(Homepage);
+export default Homepage;
