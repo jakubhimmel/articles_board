@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './../../../src/App.css';
 import articleService from "./../../lib/article-service";
 import { Link } from 'react-router-dom';
 
@@ -31,6 +32,7 @@ export default class ArticleList extends Component {
 
             return <div key = { obj._id } >
                 <Link to= {`/articles/${obj._id}`}><h3> { obj.title } </h3> </Link>
+                <img className = "list-pic" src={obj.image}></img>
                 <p> { obj.description } </p>
 
                     </div>

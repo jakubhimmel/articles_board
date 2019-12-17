@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import profilePageService from "./../lib/profilePage-service";
-import { withAuth } from '../lib/AuthProvider';
 import Auth from '../lib/auth-service';
 import { Link } from 'react-router-dom';
 
-class Profile extends Component {
+export default class Profile extends Component {
     state = {
         currentUserName:'',
         currentUserArticles:'',
@@ -36,35 +35,23 @@ class Profile extends Component {
 
     }
     render() {
-        const { user, logout, isLoggedin } = this.props;
-
         return (
             
             <div>
-            
-            {
-            isLoggedin 
-            ? (<div>
                 <Link to={`./profile/settings`}><button>Settings</button></Link>
+                <Link to={`./profile/create-article`}><button>Write new article</button></Link>
+
             <h1> {this.state.currentUserName} </h1>
-            <h1></h1>
-            <h1></h1>
-            <h1></h1>
-            <h1></h1>
-            <h1></h1>
+            <h1> {this.state.currentUserArticles} </h1>
+            <h1> {this.state.currentUserComments} </h1>
+            <h1> {this.state.currentUserFavorite} </h1>
+            <h1> {this.state.currentUserFollowing} </h1>
+
 
             </div>
-            ) : (<div>
-            <h1>U cannot ascces this page</h1>
-            </div>)
-                
+            
                 
             
-            }
-            </div>
-        )
-    }
-}
-
-
-export default withAuth(Profile);
+            )}
+           
+        }

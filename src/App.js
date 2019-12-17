@@ -10,10 +10,11 @@ import Homepage from './components/Homepage';
 import ProfilePageSettings from './components/ProfilePageSettings'
 
 import AnonRoute from './components/AnonRoute';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import ArticleList from './pages/ArticleList/ArticleList';
 import ArticleDetail from './pages/ArticleList/ArticleDetail';
 import ProfilePage from './pages/../components/ProfilePage'
+import CreateArticle from './pages/../components/CreateArticle'
 
 
 
@@ -25,17 +26,17 @@ class App extends Component {
 
         <Switch>
         <Route exact path="/homepage" component={Homepage} />
-        <Route exact path="/profile" component={ProfilePage} />
-        <Route exact path="/profile/settings" component={ProfilePageSettings} />
         <Route exact path="/articles/topics/:name" component={ArticleList} />
         <Route exact path="/articles/:id" component={ArticleDetail} />
 
+        <PrivateRoute exact path="/profile" component={ProfilePage} />
+        <PrivateRoute exact path="/profile/settings" component={ProfilePageSettings} />
+        <PrivateRoute exact path="/profile/create-article" component={CreateArticle} />
 
 
 
-
-          <AnonRoute exact path="/auth/signup" component={Signup} />
-          <AnonRoute exact path="/auth/login" component={Login} />
+        <AnonRoute exact path="/auth/signup" component={Signup} />
+        <AnonRoute exact path="/auth/login" component={Login} />
           
         
         </Switch>
