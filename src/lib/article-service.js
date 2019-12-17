@@ -14,6 +14,10 @@ class Article {
         
     }
 
+    articleDetailById( id ) {
+            return this.article.get(`/${id}`).then(response => response.data)
+    }
+
 }
 
 

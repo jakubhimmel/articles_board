@@ -4,14 +4,17 @@ import './../src/App.css'
 
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Private from './pages/Private';
+// import Private from './pages/Private';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
+import ProfilePageSettings from './components/ProfilePageSettings'
 
 import AnonRoute from './components/AnonRoute';
-import PrivateRoute from './components/PrivateRoute';
-import Profile from './components/Profile';
+// import PrivateRoute from './components/PrivateRoute';
 import ArticleList from './pages/ArticleList/ArticleList';
+import ArticleDetail from './pages/ArticleList/ArticleDetail';
+import ProfilePage from './pages/../components/ProfilePage'
+
 
 
 class App extends Component {
@@ -22,8 +25,13 @@ class App extends Component {
 
         <Switch>
         <Route exact path="/homepage" component={Homepage} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/profile/settings" component={ProfilePageSettings} />
         <Route exact path="/articles/topics/:name" component={ArticleList} />
+        <Route exact path="/articles/:id" component={ArticleDetail} />
+
+
+
 
 
           <AnonRoute exact path="/auth/signup" component={Signup} />

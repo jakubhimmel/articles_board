@@ -21,6 +21,7 @@ class Navbar extends Component {
               <button>Profile</button>
             </Link>
             
+            
             </div>
 
             <div>
