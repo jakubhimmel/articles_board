@@ -10,15 +10,26 @@ export default class ArticleList extends Component {
     articleList: []
   };
   componentDidMount() {
-    const { name } = this.props.match.params;
-    // console.log(this.props);
+    const { name,topic } = this.props.match.params;
 
+    console.log('article list',this.props);
 
-    articleService.articleByTopic(name).then(res => {
+if (topic) {
+    articleService.articleByTopic(topic).then(res => {
       console.log("article-list", res)
 
       this.setState({ articleList: res.articles });
-    });
+    })
+    
+  }else if (name) {
+      articleService.articleByName(name).then(res => {
+        console.log("article-list", res)
+  
+        this.setState({ articleList: res });
+      })
+    }
+
+  
   }
 
   render() {
@@ -32,7 +43,7 @@ export default class ArticleList extends Component {
 
             return <div key = { obj._id } >
                 <Link to= {`/articles/${obj._id}`}><h3> { obj.title } </h3> </Link>
-                <img className = "list-pic" src={obj.image}></img>
+                <img className = "list-pic" src={obj.image} alt="article header"></img>
                 <p> { obj.description } </p>
 
                     </div>

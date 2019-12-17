@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Auth from '../lib/auth-service';
-import { withAuth } from '../lib/AuthProvider';
 
 
 export default class ProfilePageSettings extends Component {
@@ -34,25 +33,11 @@ export default class ProfilePageSettings extends Component {
     }
     render() 
     {
-        const { user, logout, isLoggedin } = this.props;
 
         return (
            <div>
                <h1>Settings page </h1>
-            
-            {/* {
-            isLoggedin 
-            ? (<div>
-                <h1>settings page</h1>
-
-            </div>
-            ) : (<div>
-            <h1>U cannot ascces this page</h1>
-            </div>)
-                
-                
-            
-            } */}
+        
             </div>
         )
     }

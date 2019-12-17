@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import profilePageService from "./../lib/profilePage-service";
 import Auth from '../lib/auth-service';
 import { Link } from 'react-router-dom';
 
@@ -34,7 +33,7 @@ export default class Profile extends Component {
 
 
     }
-    render() {
+    render() {        
         return (
             
             <div>

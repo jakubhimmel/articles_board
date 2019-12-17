@@ -9,7 +9,6 @@ class Article {
     }
 
     articleByTopic( name ) {
-        
         return this.article.get(`/topics/${name}`).then(response => response.data);
         
     }
@@ -17,6 +16,14 @@ class Article {
     articleDetailById( id ) {
             return this.article.get(`/${id}`).then(response => response.data)
     }
+
+    articleByName( searchResults ) {
+        return this.article.get(`/by-name/${searchResults}`).then(response => response.data)
+}
+
+    createNewArticle( newArticle ) {
+        return this.article.post('/create', newArticle).then(response => response.data)
+}
 
 }
 

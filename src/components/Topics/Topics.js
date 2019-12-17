@@ -20,7 +20,7 @@ export default function Topics() {
     <div>
       {topics.map(element => {
         return (
-          <button>
+          <button key= {element} >
           <Link className="topics-button" to={`/articles/topics/${element}`}>{element}</Link>
 
           </button>

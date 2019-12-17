@@ -56,3 +56,7 @@
 .list-pic {
     width: 200px
 }
+
+.search-bar input {
+    border: 1px solid black;
+}

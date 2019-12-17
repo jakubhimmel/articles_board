@@ -24,7 +24,7 @@ export default class ArticleDetail extends Component {
         return (
             <div>
                 <h1> {this.state.articleDetail.title} </h1>
-                <img src={this.state.articleDetail.image}></img>
+                <img src={this.state.articleDetail.image} alt="articles header"></img>
                 <p> {this.state.articleDetail.text} </p>
                 <p> {this.state.articleDetail.created_at} </p>
                 <p> {this.state.articleDetail.comments} </p>
