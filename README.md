@@ -211,10 +211,11 @@ The url to your repository and to your deployed project
 
 [Server repository Link](https://github.com/jakubhimmel/articles_board_backend)
 
-[Deployed App Link]( ---- )
+[Deployed App Link](https://article-board.herokuapp.com/)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link]( --- )
+[Slides Link]( https://docs.google.com/presentation/d/1EzYQARuGpvEOo-H8MaQQnhwDtVA1Z26gObCa5GCvkFo/edit?usp=sharing )
+              
