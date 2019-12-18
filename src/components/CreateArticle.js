@@ -11,8 +11,10 @@ export default class CreateArticle extends Component {
         const newArticle = { title, description,topic, image, text }
 
 
-        articleService.createNewArticle( newArticle  ); 
+        articleService.createNewArticle( newArticle ); 
         this.props.history.push('/profile')
+
+        
     }
 
       handleChange = event => {
