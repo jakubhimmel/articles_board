@@ -25,6 +25,11 @@ class Article {
         return this.article.post('/create', newArticle).then(response => response.data)
 }
 
+    updateScore(id,newScore ) {
+    return this.article.put(`/${id}/vote`, {newScore} ).then(response => response.data)
+    
+    
+}
 }
 
 

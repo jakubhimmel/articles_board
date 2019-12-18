@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import articleService from './../lib/article-service'
 
 export default class CreateArticle extends Component {
-    state = { title: '', description: '',image: '', text:'' };
+    state = { title: '', topic:'', description: '',image: '', text:'' };
 
 
     handleFormSubmit = event => {
@@ -39,8 +39,10 @@ export default class CreateArticle extends Component {
             onChange={this.handleChange}
           />
 
+          {/* <label>Topic:</label>
+
           <select name="topic">
-    <option name="topic" value={topic} onChange={this.handleChange}>politics</option>
+    <option name="topic" value={topic}  onChange={this.handleChange}>politics</option>
     <option name="topic" value={topic} onChange={this.handleChange}>future</option>
     <option name="topic" value={topic} onChange={this.handleChange}>technology</option>
     <option name="topic" value={topic} onChange={this.handleChange}>health</option>
@@ -48,7 +50,15 @@ export default class CreateArticle extends Component {
     <option name="topic" value={topic} onChange={this.handleChange}>food</option>
     <option name="topic" value={topic} onChange={this.handleChange}>design</option>
     <option name="topic" value={topic} onChange={this.handleChange}>culture</option>
-  </select>
+    
+  </select> */}
+
+
+  <label>Topic:</label>
+  <input type="text" name="topic" value={topic} onChange={this.handleChange}/>
+
+
+
 
           <label>Description:</label>
           <input

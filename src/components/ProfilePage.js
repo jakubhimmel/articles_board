@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import Auth from '../lib/auth-service';
+
+
 import { Link } from 'react-router-dom';
 
 export default class Profile extends Component {
     state = {
         currentUserName:'',
-        currentUserArticles:'',
+        currentUserArticles:[],
         currentUserComments:'',
         currentUserFavorite:'',
         currentUserFollowing:''
     }  
 
     componentDidMount() {
+
+       
         Auth.me()
         .then((result) => {
             const currentUserName = result.username
@@ -20,12 +24,15 @@ export default class Profile extends Component {
             const currentUserFavorite= result.favorite
             const currentUserFollowing = result.following
             
-            this.setState({ currentUserName:currentUserName });
-            this.setState({ currentUserArticles:currentUserArticles });
+            this.setState({ currentUserName });
+            this.setState({ currentUserArticles });
             this.setState({ currentUserComments:currentUserComments });
             this.setState({ currentUserFavorite:currentUserFavorite });
             this.setState({ currentUserFollowing:currentUserFollowing });
  
+            console.log('username', result._id)    
+
+
 
         }).catch((err) => {
             
@@ -33,10 +40,15 @@ export default class Profile extends Component {
 
 
     }
-    render() {        
+    render() {    
+
         return (
             
             <div>
+
+                {
+
+                (<div>
                 <Link to={`./profile/settings`}><button>Settings</button></Link>
                 <Link to={`./profile/create-article`}><button>Write new article</button></Link>
 
@@ -45,7 +57,8 @@ export default class Profile extends Component {
             <h1> {this.state.currentUserComments} </h1>
             <h1> {this.state.currentUserFavorite} </h1>
             <h1> {this.state.currentUserFollowing} </h1>
-
+            </div>)
+        }
 
             </div>
             

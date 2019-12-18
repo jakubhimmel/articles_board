@@ -30,7 +30,8 @@ class App extends Component {
         <Route exact path="/articles/by-name/:name" component={ArticleList} />
         <Route exact path="/articles/:id" component={ArticleDetail} />
 
-        <PrivateRoute exact path="/profile" component={ProfilePage} />
+        <Route exact path="/profile" component={ProfilePage} />
+        
         <PrivateRoute exact path="/profile/settings" component={ProfilePageSettings} />
         <PrivateRoute exact path="/profile/create-article" component={CreateArticle} />
 
