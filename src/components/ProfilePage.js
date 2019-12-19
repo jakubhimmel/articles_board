@@ -1,51 +1,33 @@
 import React, { Component } from 'react'
 import Auth from '../lib/auth-service';
-
-
+import articleService from "./../lib/article-service";
+import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 
-export default class Profile extends Component {
+class Profile extends Component {
     state = {
         currentUserName:'',
         currentUserArticles:'',
-        currentUserComments:'',
-        currentUserFavorite:'',
-        currentUserFollowing:''
+
     }  
 
-    componentDidMount() {
-
-       
-        
-        Auth.me()
-        .then((result) => {
-            const currentUserName = result.username
-            const currentUserArticles= result.articles
-            const currentUserComments = result.comments
-            const currentUserFavorite= result.favorite
-            const currentUserFollowing = result.following
-            
-            this.setState({ currentUserName });
-            this.setState({ currentUserArticles });
-            this.setState({ currentUserComments:currentUserComments });
-            this.setState({ currentUserFavorite:currentUserFavorite });
-            this.setState({ currentUserFollowing:currentUserFollowing });
- 
-            console.log('username', result)    
 
 
 
-        }).catch((err) => {
-            
-        });
 
-    }
-
-
+    // componentDidMount() {
+    //         Auth.getUser().then((res)=> {
+    //             console.log(res);
+                
+    //         })
     // }
-    render() {    
-        
 
+
+    render() {    
+        console.log(this.props);
+        var baseURL = process.env.REACT_APP_API_URL + '/articles'
+
+        
         return (
             
             <div>
@@ -53,16 +35,38 @@ export default class Profile extends Component {
                 
 
                 
-                <Link to={`./profile/settings`}><button>Settings</button></Link>
-                <Link to={`./profile/create-article`}><button>Write new article</button></Link>
+            <Link to={`./profile/settings`}><button>Settings</button></Link>
+            <Link to={`./profile/create-article`}><button>Write new article</button></Link>
 
-            <h1> {this.state.currentUserName} </h1>
-            <h1> {this.state.currentUserArticles} </h1>
-            <h1> {this.state.currentUserComments} </h1>
-            <h1> {this.state.currentUserFavorite} </h1>
-            <h1> {this.state.currentUserFollowing} </h1>
-            
-        
+            {this.props.user ? (
+                <div>
+                <h1> {this.props.user.username} </h1>
+
+                     <div>
+                         {
+                         this.props.user.articles.map((obj) => {
+                        return (
+                            <div  className="user-articles-list">
+                            <p> {obj.title} </p>
+                            <p> {obj.description} </p>
+                            <p> {obj.score} </p>
+                            <p> {obj.topic} </p>
+
+                            <img className='' src={obj.image}></img>
+
+                            <Link to={`/articles/${obj._id}`}>See article</Link>
+                                </div>
+                        )
+                        } )
+                        }
+                    </div>
+                
+
+                        </div>
+            ) : null
+           
+           
+            }
 
             </div>
             
@@ -71,3 +75,5 @@ export default class Profile extends Component {
             )}
            
         }
+
+export default withAuth(Profile);

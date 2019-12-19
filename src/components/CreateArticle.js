@@ -15,7 +15,6 @@ export default class CreateArticle extends Component {
           this.state.title === '' ||
           this.state.topic === '' ||
           this.state.description === '' ||
-          this.state.image === '' ||
           this.state.text === ''
       ) 
       {

@@ -54,7 +54,7 @@ class Navbar extends Component {
 
               <p>Login</p>
             </Link>
-          <Link>
+          <Link to='/auth/signup'>
               <p>Signup</p>
             </Link>
             <br/>

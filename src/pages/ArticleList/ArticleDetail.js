@@ -79,7 +79,7 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
 
         <p>{this.state.articleDetail.score}</p>
 
-
+        <div className="buttons">
         <button
           onClick={() => {
             this.scoreHandler(+1);
@@ -96,7 +96,7 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
         </button>
 
         <button>Add to favorites</button>
-
+        </div>
         </div>
 
         <CommentsWrapper

@@ -30,6 +30,16 @@ class Auth {
     me() {
         return this.auth.get('/auth/me').then(response => response.data);
     }
+
+    getUser() {
+        return this.auth.get('/users').then(response => {
+            console.log(response);
+            
+        return response.data
+    })
+            
+
+    }
 }
 
 const axiosRequestFunctions = new Auth();
