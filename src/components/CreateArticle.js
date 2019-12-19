@@ -66,7 +66,8 @@ export default class CreateArticle extends Component {
           this.state.errorMessage ?
           <div>
         <h1>Write new article</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}></form>
+          <div className="new-article-form">
           <label>Title:</label>
           <input
             type="text"
@@ -127,14 +128,16 @@ export default class CreateArticle extends Component {
 
 
           <input type="submit" value="Post" />
-        </form>
+
+        </div>
 
         <p>Please provide all information</p>
 </div>
        :
        <div>
         <h1>Write new article</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit}></form>
+        <div className="new-article-form">
           <label>Title:</label>
           <input
             type="text"
@@ -195,7 +198,7 @@ export default class CreateArticle extends Component {
 
 
           <input type="submit" value="Post" />
-        </form>
+          </div>
 </div>
         
         }

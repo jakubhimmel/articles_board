@@ -35,27 +35,38 @@ class Profile extends Component {
                 
 
                 
-            <Link to={`./profile/settings`}><button>Settings</button></Link>
-            <Link to={`./profile/create-article`}><button>Write new article</button></Link>
+           
 
             {this.props.user ? (
                 <div>
                 <h1> {this.props.user.username} </h1>
 
+                <div className="profile-page-buttons">
+                <Link to={`./profile/settings`}><button>Settings</button></Link>
+            <Link to={`./profile/create-article`}><button>Write new article</button></Link>
+            </div>
+
                      <div>
                          {
                          this.props.user.articles.map((obj) => {
-                        return (
-                            <div  className="user-articles-list">
+                        return (<Link to={`/articles/${obj._id}`}>
+                            <div  className="article-preview">
+                           
+                            <div className='profile-preview-pic'>
+                            <img className='' src={obj.image}></img>
+                            </div>
+                       
+                            <div className='profile-preview-pic' >
                             <p> {obj.title} </p>
                             <p> {obj.description} </p>
                             <p> {obj.score} </p>
                             <p> {obj.topic} </p>
+                            </div>
 
-                            <img className='' src={obj.image}></img>
 
-                            <Link to={`/articles/${obj._id}`}>See article</Link>
                                 </div>
+                                </Link>
+
                         )
                         } )
                         }
