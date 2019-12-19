@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import Auth from '../lib/auth-service';
+import authService from '../lib/auth-service';
 import articleService from "./../lib/article-service";
 import { withAuth } from '../lib/AuthProvider';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
     state = {
-        currentUserName:'',
-        currentUserArticles:'',
+        currentUser:null,
+        currentUserArticles:[],
 
     }  
 
@@ -15,12 +15,14 @@ class Profile extends Component {
 
 
 
-    // componentDidMount() {
-    //         Auth.getUser().then((res)=> {
-    //             console.log(res);
+    componentDidMount() {
+        authService
+            .getUser()
+            .then((res)=> {
+               this.setState( {currentUser:res,currentUserArticles:res.articles } );
                 
-    //         })
-    // }
+            })
+    }
 
 
     render() {    
@@ -37,18 +39,18 @@ class Profile extends Component {
                 
            
 
-            {this.props.user ? (
+            {this.state.currentUser ? (
                 <div>
-                <h1> {this.props.user.username} </h1>
+                <h1> {this.state.currentUser.username} </h1>
 
                 <div className="profile-page-buttons">
-                <Link to={`./profile/settings`}><button>Settings</button></Link>
-            <Link to={`./profile/create-article`}><button>Write new article</button></Link>
+                <Link to={`/profile/settings`}><button>Settings</button></Link>
+            <Link to={`/profile/create-article`}><button>Write new article</button></Link>
             </div>
 
                      <div>
                          {
-                         this.props.user.articles.map((obj) => {
+                         this.state.currentUserArticles.map((obj) => {
                         return (<Link to={`/articles/${obj._id}`}>
                             <div  className="article-preview">
                            
