@@ -10,8 +10,7 @@ const NewComment = (props) => {
       <div className='comment-section'>
         <p>Comments:</p>
         <form onSubmit={props.handleFormSubmit}>
-          <textarea
-          rows='10'
+          <input
           className="textarea"
             type="text"
             name="text"
