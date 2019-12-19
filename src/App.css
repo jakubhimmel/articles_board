@@ -308,9 +308,8 @@
                                     flex-direction: column;
                                 }
                                 
-                                .comment-section .textarea {
+                                .comment-section textarea {
                                     width: 500px;
-                                    height: 100px;
                                     border: rgb(240, 240, 240) 1px solid;
                                     justify-content: top;
                                     text-align: left;
@@ -394,5 +393,18 @@
                                 }
                                 
                                 .new-article-form input {
-                                    width: 100px
+                                    width: 150px;
+                                    margin-left: 44.5%;
+                                }
+                                
+                                .create-text textarea {
+                                    columns: 1000;
+                                    width: 1000px;
+                                    margin-left: 0;
+                                    margin-bottom: 25px;
+                                    align-self: flex-start;
+                                }
+                                
+                                .create-text button {
+                                    border: none;
                                 }

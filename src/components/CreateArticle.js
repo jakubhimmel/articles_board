@@ -119,15 +119,18 @@ export default class CreateArticle extends Component {
           />
 
           <label>Text:</label>
-          <input
+          <div className="create-text">
+          <textarea
+          rows = '50'
             type="textarea"
             name="text"
             value={text}
             onChange={this.handleChange}
           />
+          </div>
 
 
-          <input type="submit" value="Post" />
+          <input class='button' type="submit" value="Post" />
 
         </div>
 
@@ -189,15 +192,20 @@ export default class CreateArticle extends Component {
           />
 
           <label>Text:</label>
-          <input
+          <div className="create-text">
+
+          <textarea
+
+          rows = '50'
             type="textarea"
             name="text"
             value={text}
             onChange={this.handleChange}
           />
+          </div>
 
 
-          <input type="submit" value="Post" />
+          <input class='button' type="submit" value="Post" />
           </div>
 </div>
         
