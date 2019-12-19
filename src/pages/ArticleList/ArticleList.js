@@ -9,6 +9,7 @@ export default class ArticleList extends Component {
   state = {
     articleList: []
   };
+  
   componentDidMount() {
     const { name,topic } = this.props.match.params;
 

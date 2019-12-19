@@ -28,7 +28,10 @@ export default class CreateArticle extends Component {
       const { title, topic, description, image, text } = this.state;
       const newArticle = { title, description, topic, image, text };
 
-      articleService.createNewArticle(newArticle);
+      articleService.createNewArticle(newArticle).then(res => {
+        console.log('res', res);
+        
+      });
       this.props.history.push("/profile");
     }
   };
