@@ -7,51 +7,55 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div>
-       <div 
-        style={{ borderRadius: '5px', padding: '20px', background: '#686de0' }}>
+       <div className = 'nav-bar'>
         {isLoggedin ? (
           <div className="navbar">
             
           <div className='navbar-menu'>
             <Link to="/homepage">
-              <button>Home</button>
+            <h3>write.it</h3>
+            </Link>
+            <Link to="/homepage">
+              <p>Home</p>
             </Link>
 
             <Link to="/profile">
-              <button>Profile</button>
+              <p>Profile</p>
             </Link>
             
             
             </div>
 
-            <div>
-            <p>username: {user.username}</p>
-            <button onClick={logout}>Logout</button>
+            <div className='user-info'>
+              <div className="left">
+            <img src='https://c7.uihere.com/icons/629/613/248/user-avatar-0ac331edcf7e5061afc12cca37be2489.png'></img>
+            <Link to="/profile"><p>{user.username}</p></Link>
+            </div>
+            <p onClick={logout}>Logout</p>
             </div>
 
            
           </div>
         ) : (
-          <div className = 'navbar'>
+          <div className = "navbar">
           <div className='navbar-menu'>
+          <h3>write.it</h3>
             <Link to="/homepage">
-              <button>Home</button>
+              <p>Home</p>
             </Link>
 
             <Link to="/profile">
-              <button>Profile</button>
+              <p>Profile</p>
             </Link>
             </div>
 
-          <div className="is-logged-in">
+          <div className='login'>
             <Link to="/auth/login">
-              {' '}
-              <button>Login</button>{' '}
+
+              <p>Login</p>
             </Link>
-            <br />
-            <Link to="/auth/signup">
-              {' '}
-              <button>Signup</button>{' '}
+          <Link>
+              <p>Signup</p>
             </Link>
             <br/>
             </div>

@@ -34,25 +34,36 @@ if (topic) {
 
   render() {
 
+
       
-      
-    return <div>
-        {
+    return (
+        
 
         this.state.articleList.map( (obj) => {console.log(obj);
+         const day = obj.created_at.slice(8,10)
+        var monthInt = obj.created_at.slice(5,7)
 
-            return <div key = { obj._id } >
-                <Link to= {`/articles/${obj._id}`}><h3> { obj.title } </h3> </Link>
-                <img className = "list-pic" src={obj.image} alt="article header"></img>
+if(monthInt == 12) {var newMonth = 'december'}
+
+
+
+            return <Link to= {`/articles/${obj._id}`}>
+            <div className='article-preview' key = { obj._id } >
+              <div className='preview-pic'>
+              <img className = "list-pic" src={obj.image} alt="article header"></img>
+            </div>
+            <div className='pic-info'>
+                <h3> { obj.title } </h3> 
                 <p> { obj.description } </p>
-
-                    </div>
+                <p>{day + " " + newMonth + " " +  obj.created_at.slice(0,4)}</p>
+            </div>
+            </div>
+    </Link>
+    
+                    
         }
         )
+    )
+  }
         }
-    </div>
-    
         
-      
-  
-}}

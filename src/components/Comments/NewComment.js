@@ -2,19 +2,12 @@ import React from "react";
 
 const NewComment = (props) => {
     return (
-      <div>
-        <h1>Comments:</h1>
+      <div className='comment-section'>
+        <p>Comments:</p>
         <form onSubmit={props.handleFormSubmit}>
-          <label>Title:</label>
           <input
-            type="text"
-            name="title"
-            value={props.title}
-            onChange={props.handleChange}
-          />
-
-          <label>Text:</label>
-          <input
+          className="texarea"
+          placeholder="Respond "
             type="text"
             name="text"
             value={props.text}

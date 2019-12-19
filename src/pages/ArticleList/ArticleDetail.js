@@ -9,6 +9,10 @@ export default class ArticleDetail extends Component {
     articleDetail: {}
   };
 
+
+  
+  
+
   scoreHandler = value => {
     const { id } = this.props.match.params;
 
@@ -37,14 +41,44 @@ export default class ArticleDetail extends Component {
   render() {
     console.log(this.state.articleDetail);
     console.log("mz props",this.props);
+
+const date = this.state.articleDetail.created_at; 
+
+const dateNew = String(date);
+
+const year = dateNew.slice(0,4);
+const month = dateNew.slice(5,7);
+const day =dateNew.slice(8,10);
+
+console.log(month);
+
+if(month ==12) { var newMonth = 'december'
+}
+
+
+const formattedTime = day + ' ' + newMonth + ' ' + year;
+
+
+    console.log('DATE',this.state.articleDetail)
+
+
     return (
       <div>
+        <div className='article-top'>
         <h1> {this.state.articleDetail.title} </h1>
+        <p className='article-description'> {this.state.articleDetail.description} </p>
+                <p> {formattedTime} </p>
+
+
         <img src={this.state.articleDetail.image} alt="articles header"></img>
-        <p> {this.state.articleDetail.text} </p>
-        <p> {this.state.articleDetail.created_at} </p>
+        <p className= 'text'> {this.state.articleDetail.text} </p>
+
+        </div>
+        <div className='article-score'>
+
 
         <p>{this.state.articleDetail.score}</p>
+
 
         <button
           onClick={() => {
@@ -62,6 +96,8 @@ export default class ArticleDetail extends Component {
         </button>
 
         <button>Add to favorites</button>
+
+        </div>
 
         <CommentsWrapper
           comments={this.state.articleDetail.comments}

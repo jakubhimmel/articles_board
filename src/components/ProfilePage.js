@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default class Profile extends Component {
     state = {
         currentUserName:'',
-        currentUserArticles:[],
+        currentUserArticles:'',
         currentUserComments:'',
         currentUserFavorite:'',
         currentUserFollowing:''
@@ -16,6 +16,7 @@ export default class Profile extends Component {
     componentDidMount() {
 
        
+        
         Auth.me()
         .then((result) => {
             const currentUserName = result.username
@@ -30,7 +31,7 @@ export default class Profile extends Component {
             this.setState({ currentUserFavorite:currentUserFavorite });
             this.setState({ currentUserFollowing:currentUserFollowing });
  
-            console.log('username', result._id)    
+            console.log('username', result)    
 
 
 
@@ -38,17 +39,20 @@ export default class Profile extends Component {
             
         });
 
-
     }
+
+
+    // }
     render() {    
+        
 
         return (
             
             <div>
 
-                {
+                
 
-                (<div>
+                
                 <Link to={`./profile/settings`}><button>Settings</button></Link>
                 <Link to={`./profile/create-article`}><button>Write new article</button></Link>
 
@@ -57,8 +61,8 @@ export default class Profile extends Component {
             <h1> {this.state.currentUserComments} </h1>
             <h1> {this.state.currentUserFavorite} </h1>
             <h1> {this.state.currentUserFollowing} </h1>
-            </div>)
-        }
+            
+        
 
             </div>
             

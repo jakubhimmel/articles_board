@@ -1,62 +1,312 @@
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.is-logged-in {
-    display: flex;
-    flex-direction: column;
-}
-
-.navbar-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-.list-pic {
-    width: 200px
-}
-
-.search-bar input {
-    border: 1px solid black;
-}
+                                    .App {
+                                        text-align: center;
+                                    }
+                                    
+                                    @import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+                                    body {
+                                        font-family: 'Merriweather', serif;
+                                        margin: 0;
+                                    }
+                                    
+                                    a {
+                                        margin: 0;
+                                        list-style-type: none;
+                                        text-decoration: none;
+                                        color: black;
+                                    }
+                                    
+                                    button {}
+                                    
+                                    h1 {
+                                        font-size: 100px;
+                                    }
+                                    
+                                    .App-logo {
+                                        height: 40vmin;
+                                        pointer-events: none;
+                                    }
+                                    
+                                    @media (prefers-reduced-motion: no-preference) {
+                                        .App-logo {
+                                            animation: App-logo-spin infinite 20s linear;
+                                        }
+                                    }
+                                    
+                                    .App-header {
+                                        background-color: #282c34;
+                                        min-height: 100vh;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: left;
+                                        justify-content: left;
+                                        font-size: calc(10px + 2vmin);
+                                        color: white;
+                                    }
+                                    
+                                    .App-link {
+                                        color: #61dafb;
+                                    }
+                                    
+                                    @keyframes App-logo-spin {
+                                        from {
+                                            transform: rotate(0deg);
+                                        }
+                                        to {
+                                            transform: rotate(360deg);
+                                        }
+                                    }
+                                    
+                                    .list-pic {
+                                        width: 200px
+                                    }
+                                    
+                                    button {
+                                        border: 0;
+                                        padding: 0;
+                                        background: inherit;
+                                        font-size: 1em;
+                                        font-family: 'Merriweather', serif;
+                                    }
+                                    /*///// nav bar ///////*/
+                                    
+                                    .nav-bar {
+                                        position: -webkit-sticky;
+                                        position: sticky;
+                                        top: 4rem;
+                                    }
+                                    
+                                    .navbar {
+                                        display: flex;
+                                        flex-direction: row;
+                                        justify-content: space-between;
+                                        border-bottom: 2px solid rgb(255, 5, 5);
+                                        /* box-shadow: 1px 3px red; */
+                                        padding: '20px';
+                                        background: rgb(31, 255, 1);
+                                        text-decoration: none;
+                                    }
+                                    
+                                    .navbar-menu {
+                                        display: flex;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        margin-left: 25px;
+                                    }
+                                    
+                                    .navbar-menu h3 {
+                                        border-right: 1px solid black;
+                                        padding-right: 25px;
+                                        font-size: 1.75em;
+                                    }
+                                    
+                                    .navbar-menu a {
+                                        margin-left: 25px;
+                                    }
+                                    
+                                    .user-info {
+                                        margin-right: 25px;
+                                        margin-top: 0;
+                                        padding: 10px;
+                                        display: flex;
+                                        flex-direction: row;
+                                        align-items: center;
+                                    }
+                                    
+                                    .user-info .left {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: flex-end;
+                                    }
+                                    
+                                    .user-info .left p {
+                                        margin-left: 0;
+                                        margin-top: 10px;
+                                    }
+                                    
+                                    .user-info p {
+                                        margin-top: 0;
+                                        margin-bottom: 0;
+                                        margin-left: 30px;
+                                    }
+                                    
+                                    .user-info img {
+                                        width: 25px;
+                                    }
+                                    
+                                    .login {
+                                        display: flex;
+                                        flex-direction: row;
+                                        height: 10px;
+                                    }
+                                    
+                                    .login p {
+                                        margin-top: 30px;
+                                    }
+                                    
+                                    .login a {
+                                        margin: 0 25px 0 0;
+                                    }
+                                    /*///// homepage ///////*/
+                                    
+                                    .homepage {
+                                        /* background-image: url('https://media.giphy.com/media/MLdfUSrh5QKcg/giphy.gif');
+        background-size: 2000px;
+        background-repeat: no-repeat; */
+                                    }
+                                    
+                                    .homepage h1 {
+                                        padding: 20px 0 20px 0;
+                                        font-size: 7em;
+                                    }
+                                    
+                                    .search-bar .form {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;
+                                        align-content: center;
+                                        text-align: center;
+                                    }
+                                    
+                                    .search-bar a {
+                                        margin: 0;
+                                    }
+                                    
+                                    .search-box {
+                                        float: left;
+                                        background-color: rgb(255, 255, 255);
+                                        color: rgb(0, 0, 0);
+                                        padding: 6px 10px;
+                                        width: 120px;
+                                        border: none;
+                                        margin-top: 1px;
+                                        margin-right: 8px;
+                                        font-size: 1em;
+                                        border-bottom: rgb(0, 255, 64) solid 2px;
+                                        transition: 0.3s;
+                                    }
+                                    
+                                    .search-box::placeholder {
+                                        color: white;
+                                        font-size: 2em;
+                                        /* transition: 0.2s; */
+                                    }
+                                    
+                                    .search-box:focus {
+                                        width: 400px;
+                                        font-size: 1em;
+                                        transition: 0.3s;
+                                        /* Stops the input box from inheriting the styling from the inputs on the request form */
+                                        border-bottom: rgb(0, 255, 64) solid 2px;
+                                        outline: none;
+                                    }
+                                    
+                                    .searchButton {
+                                        cursor: pointer;
+                                        color: rgb(0, 0, 0);
+                                        text-decoration: none !important;
+                                        font-size: 1.2em;
+                                        padding-top: 20px;
+                                        margin-right: 40px;
+                                    }
+                                    
+                                    .searchButton img {
+                                        width: 25px;
+                                    }
+                                    
+                                    .topic-button {
+                                        margin: 20px;
+                                        font-size: 1.5em;
+                                    }
+                                    
+                                    .topic-button:hover {
+                                        margin: 20px;
+                                        font-size: 1.5em;
+                                        background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+                                        background-repeat: no-repeat;
+                                        background-size: 100% 0.2em;
+                                        background-position: 0 88%;
+                                        transition: background-size 0.25s ease-in;
+                                        background-size: 100% 88%;
+                                    }
+                                    
+                                    .topic-list {
+                                        margin-top: 75px;
+                                    }
+                                    
+                                    .article-preview {
+                                        margin: 35px 200px;
+                                        padding-bottom: 25px;
+                                        display: flex;
+                                        flex-direction: row;
+                                        border-bottom: 2px rgb(0, 255, 0) solid;
+                                    }
+                                    
+                                    .preview-pic img {
+                                        width: 250px;
+                                        height: 250px;
+                                        object-fit: cover;
+                                    }
+                                    
+                                    .pic-info {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: left;
+                                        align-items: flex-start;
+                                        margin-left: 25px;
+                                    }
+                                    
+                                    .pic-info h3 {
+                                        margin: 0;
+                                    }
+                                    
+                                    .article-top {
+                                        text-align: left;
+                                        margin-left: 15%;
+                                    }
+                                    
+                                    .text {
+                                        margin-top: 75px;
+                                    }
+                                    
+                                    .article-description {
+                                        font-style: italic;
+                                    }
+                                    
+                                    .article-top h1 {
+                                        margin-bottom: 5px;
+                                    }
+                                    
+                                    .article-score {
+                                        text-align: left;
+                                        margin-left: 15%;
+                                        margin-right: 15%;
+                                        margin-top: 50px;
+                                        border-top: 2px rgb(0, 255, 0) solid;
+                                    }
+                                    
+                                    .article-score p {
+                                        margin: 10px 0 0 0;
+                                    }
+                                    
+                                    .article-score button {
+                                        margin: 10px 0 0 25px;
+                                    }
+                                    
+                                    .comment-section {
+                                        text-align: left;
+                                        margin-left: 15%;
+                                        margin-top: 50px;
+                                    }
+                                    
+                                    .comment-section * {
+                                        display: flex;
+                                        flex-direction: column;
+                                    }
+                                    
+                                    .comment-section .texarea {
+                                        width: 500px;
+                                        height: 300px;
+                                        border: lightgray 1px solid;
+                                        justify-content: center;
+                                    }

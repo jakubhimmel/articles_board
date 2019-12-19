@@ -8,10 +8,11 @@ import SearchBar from './SearchBar'
 
         return (
             
-            <div>
+            <div className='homepage'>
+
+                <h1>write.it</h1>
 
            <SearchBar/>
-            <p>Topics</p>
             <Topics/>
 
             </div>

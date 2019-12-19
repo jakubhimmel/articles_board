@@ -33,8 +33,10 @@ class SearchBar extends Component {
     return (
       <div className="search-bar">
         <form>
-          <input type="text" name="search-query" onChange={this.handleChange} />
-          <Link to={`/articles/by-name/${this.state.searchTerm}`}>Search</Link>
+          <div className='form'>
+          <input className='search-box' type="text" name="search-query" onChange={this.handleChange} />
+          <Link className="searchButton" to={`/articles/by-name/${this.state.searchTerm}`}>Search</Link>
+          </div>
         </form>
       </div>
     );

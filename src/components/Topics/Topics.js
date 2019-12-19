@@ -17,11 +17,11 @@ export default function Topics() {
   ];
 
   return (
-    <div>
+    <div className='topic-list'>
       {topics.map(element => {
         return (
-          <button key= {element} >
-          <Link className="topics-button" to={`/articles/topics/${element}`}>{element}</Link>
+          <button className='topic-button' key= {element} >
+          <Link className="topics-button" to={`/articles/topics/${element}`}># {element}</Link>
 
           </button>
         );
