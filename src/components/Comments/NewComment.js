@@ -1,12 +1,18 @@
 import React from "react";
+import { withAuth } from './../../lib/AuthProvider'
+
 
 const NewComment = (props) => {
 
-    return (
+  const { user, logout, isLoggedin } = props;
+return (
 
-      
-
-
+  <div>    
+    {
+      !isLoggedin 
+        ? null
+        :
+      <div>
       <div className='comment-section'>
         <p>Comments:</p>
         <form onSubmit={props.handleFormSubmit}>
@@ -19,9 +25,11 @@ const NewComment = (props) => {
           />
           <input className = 'create-article-button' type="submit" value="Post"/>
         </form>
-      </div>
+        </div>
+</div>   }
+</div>
     );
   
 }
 
-export default NewComment;
+export default withAuth(NewComment);

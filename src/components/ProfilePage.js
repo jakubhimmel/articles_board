@@ -22,6 +22,7 @@ class Profile extends Component {
                this.setState( {currentUser:res,currentUserArticles:res.articles } );
                 
             })
+        
     }
 
 
@@ -30,15 +31,8 @@ class Profile extends Component {
         var baseURL = process.env.REACT_APP_API_URL + '/articles'
 
         
-        return (
-            
+        return (         
             <div>
-
-                
-
-                
-           
-
             {this.state.currentUser ? (
                 <div>
                 <h1> {this.state.currentUser.username} </h1>
@@ -51,23 +45,23 @@ class Profile extends Component {
                      <div>
                          {
                          this.state.currentUserArticles.map((obj) => {
-                        return (<Link to={`/articles/${obj._id}`}>
-                            <div  className="article-preview">
+                        return (
+                            <Link to={`/articles/${obj._id}`}>
+                            <div className="article-preview-profile"> 
                            
-                            <div className='profile-preview-pic'>
-                            <img className='' src={obj.image}></img>
+                            <div className='profile-pic-list'>
+                            <img src={obj.image}></img>
                             </div>
                        
-                            <div className='profile-preview-pic' >
-                            <p> {obj.title} </p>
-                            <p> {obj.description} </p>
-                            <p> {obj.score} </p>
-                            <p> {obj.topic} </p>
+                            <div className='profile-pic-info' >
+                            <p className='profile-articles-title'> {obj.title} </p>
+                            <p className='profile-articles-description'> {obj.description} </p>
+                            <p> #{obj.topic} </p>
                             </div>
 
 
-                                </div>
-                                </Link>
+                            </div>
+                                </Link>                    
 
                         )
                         } )

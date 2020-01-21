@@ -30,6 +30,13 @@ class Article {
     
     
 }
+
+    deleteArticle(id ) {
+    return this.article.put(`/${id}/delete`).then(response => response.data)
+    
+    
+}
+
 }
 
 
