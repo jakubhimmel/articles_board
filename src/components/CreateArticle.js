@@ -114,15 +114,15 @@ export default class CreateArticle extends Component {
           />
 
           <label>Text:</label>
-          <input
-            type="textarea"
+          <textarea
             name="text"
             value={text}
             onChange={this.handleChange}
+            cols={80} rows={10}
           />
 
 
-          <input type="submit" value="Post" />
+          <input className='last' type="submit" value="Post" />
 
         </div>
 
@@ -187,15 +187,15 @@ export default class CreateArticle extends Component {
           />
 
           <label>Text:</label>
-          <input
-            type="textarea"
+          <textarea
             name="text"
             value={text}
             onChange={this.handleChange}
+            cols={120} rows={10}
           />
 
 
-          <input type="submit" value="Post" />
+          <input className='last' type="submit" value="Post" />
           </div>
           </form>
 </div>

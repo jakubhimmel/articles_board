@@ -24,7 +24,7 @@ console.log('response ',obj);
           return (<div className='comments'>
          
             <p className='title'>{obj.ownerName}</p>
-            <p className='text'>{obj.text}</p>
+            <p className='comment-text'>{obj.text}</p>
             {/* <p>{day + " " + monthString + " " +  year}</p> */}
 
           </div> )

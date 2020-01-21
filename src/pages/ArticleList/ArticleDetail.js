@@ -8,9 +8,13 @@ class articleDetail extends Component {
     articleDetail: {}
   };
 
+  deleteArticle=()=> {
+    const { id } = this.props.match.params;
+    articleService.deleteArticle(id)
+      .then(()=> {this.props.history.push('/profile')})
+  }
+  
 
-  
-  
 
   scoreHandler = value => {
     const { id } = this.props.match.params;
@@ -51,27 +55,26 @@ const monthInt = dateNew.slice(5,7);
 const day =dateNew.slice(8,10);
 
 
-if(monthInt === 1) {var newMonth = 'january'}
-if(monthInt === 2) {var newMonth = 'february'}
-if(monthInt === 3) {var newMonth = 'march'}
-if(monthInt === 4) {var newMonth = 'april'}
-if(monthInt === 5) {var newMonth = 'may'}
-if(monthInt === 6) {var newMonth = 'june'}
-if(monthInt === 7) {var newMonth = 'july'}
-if(monthInt === 8) {var newMonth = 'august'}
-if(monthInt === 9) {var newMonth = 'september'}
-if(monthInt === 10) {var newMonth = 'october'}
-if(monthInt === 11) {var newMonth = 'november'}
-if(monthInt === 12) {var newMonth = 'december'}
+if(monthInt == 1) {var newMonth = 'january'}
+if(monthInt == 2) {var newMonth = 'february'}
+if(monthInt == 3) {var newMonth = 'march'}
+if(monthInt == 4) {var newMonth = 'april'}
+if(monthInt == 5) {var newMonth = 'may'}
+if(monthInt == 6) {var newMonth = 'june'}
+if(monthInt == 7) {var newMonth = 'july'}
+if(monthInt == 8) {var newMonth = 'august'}
+if(monthInt == 9) {var newMonth = 'september'}
+if(monthInt == 10) {var newMonth = 'october'}
+if(monthInt == 11) {var newMonth = 'november'}
+if(monthInt == 12) {var newMonth = 'december'}
 
 
 const formattedTime = day + ' ' + newMonth + ' ' + year;
 
-
-    console.log('DATE',this.state.articleDetail)
-
-
     return (
+      
+
+
       <div>
         <div className='article-top preview-pic'>
           { isLoggedin ? (
@@ -81,8 +84,12 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
                 <p> {formattedTime} </p>
 
 
+
+
+
+
         <img src={this.state.articleDetail.image} alt="articles header"></img>
-        <p className= 'text'> {this.state.articleDetail.text} </p>
+        <p className='text'> {this.state.articleDetail.text} </p>
 
         
         <div className='article-score'>
@@ -105,8 +112,11 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
         >
           <p>Down vote</p>
         </button>
+        
+        <button>
+        <p>Add to favorites</p>
+        </button>
 
-        <button>Add to favorites</button>
         </div>
         </div>
 
@@ -115,6 +125,8 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
           articleId={this.state.articleDetail}
           updateState={this.updateState}
         />
+        <button onClick={this.deleteArticle()}>Delete</button>
+
           </div>
           ) : (
             <div>
@@ -125,7 +137,7 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
 
 
         <img src={this.state.articleDetail.image} alt="articles header"></img>
-        <p className= 'text'> {this.state.articleDetail.text} </p>
+        <p className= 'comment-text'> {this.state.articleDetail.text} </p>
 
 
 
@@ -136,6 +148,8 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
           articleId={this.state.articleDetail}
           updateState={this.updateState}
         />
+        <button onClick={this.deleteArticle()}>Delete</button>
+
         </div>
 
           )

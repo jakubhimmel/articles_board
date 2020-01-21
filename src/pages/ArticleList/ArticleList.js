@@ -9,11 +9,20 @@ export default class ArticleList extends Component {
   state = {
     articleList: []
   };
+
+  deleteArticle=()=> {
+  const { id } = this.props.match.params;
+  articleService.deleteArticle(id).then(res => {
+      this.setState({ articleDetail: res });
+    });
+}
   
   componentDidMount() {
     const { name,topic } = this.props.match.params;
-
+    
     console.log('article list',this.props);
+    
+
 
 if (topic) {
     articleService.articleByTopic(topic).then(res => {
@@ -63,6 +72,7 @@ if(monthInt == 12) {var newMonth = 'december'}
 
             return <Link to= {`/articles/${obj._id}`}>
             <div className='article-preview' key = { obj._id } >
+
               <div className='preview-pic-list'>
               <img className = "list-pic" src={obj.image} alt="article header"></img>
             </div>

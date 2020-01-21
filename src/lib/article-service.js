@@ -32,7 +32,7 @@ class Article {
 }
 
     deleteArticle(id ) {
-    return this.article.put(`/${id}/delete`).then(response => response.data)
+    return this.article.delete(`/${id}/delete`).then(response => response.data)
     
     
 }

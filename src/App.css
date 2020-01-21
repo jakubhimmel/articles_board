@@ -16,8 +16,6 @@
                                     color: black;
                                 }
                                 
-                                button {}
-                                
                                 h1 {
                                     font-size: 100px;
                                 }
@@ -320,15 +318,6 @@
                                     margin-top: 10px;
                                 }
                                 
-                                .article-top {
-                                    text-align: left;
-                                    margin-left: 15%;
-                                }
-                                
-                                .text {
-                                    margin-top: 75px;
-                                }
-                                
                                 .article-description {
                                     font-style: italic;
                                 }
@@ -339,20 +328,14 @@
                                 
                                 .article-score {
                                     text-align: center;
+                                    display: flex;
+                                    flex-direction: column;
                                     margin-top: 100px;
                                     border-top: 2px rgb(0, 255, 0) solid;
                                     padding-top: 50px;
                                     padding-bottom: 50px;
                                     margin-left: 16%;
                                     margin-right: 16%;
-                                }
-                                
-                                .article-score .buttons button {
-                                    margin-left: 30px;
-                                }
-                                
-                                .article-score .buttons {
-                                    margin-left: 30px;
                                 }
                                 
                                 .comment-section {
@@ -366,13 +349,13 @@
                                     flex-direction: column;
                                 }
                                 
-                                .comment-section textarea {
-                                    width: 500px;
-                                    border: rgb(240, 240, 240) 1px solid;
-                                    justify-content: top;
-                                    text-align: left;
-                                    align-self: center;
-                                    box-shadow: 3px 3px 6px 2px rgba(176, 176, 176, 1);
+                                .buttons {
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                                
+                                .buttons:focus {
+                                    outline: none
                                 }
                                 
                                 .comment-section .create-article-button {
@@ -382,6 +365,30 @@
                                     align-items: center;
                                     background: white;
                                     outline: none;
+                                }
+                                
+                                textarea {
+                                    width: 1300px;
+                                    height: 800px;
+                                    align-self: center;
+                                    font-size: 1.02em;
+                                }
+                                
+                                .comment-section textarea {
+                                    width: 490px;
+                                    height: 100px;
+                                    align-self: center;
+                                    font-size: 1.02em;
+                                }
+                                
+                                .new-article-form .last {
+                                    margin-bottom: 30px;
+                                    margin-top: 30px;
+                                }
+                                
+                                .new-article-form select {
+                                    width: 100px;
+                                    align-self: center;
                                 }
                                 
                                 .comments {
@@ -399,10 +406,6 @@
                                     font-size: 1.25em;
                                     font-weight: 900;
                                     margin: 25px;
-                                }
-                                
-                                .text {
-                                    margin: 25px
                                 }
                                 
                                 .article-preview {
@@ -433,14 +436,25 @@
                                 
                                 .profile-page-buttons {
                                     display: flex;
+                                    flex-direction: row;
+                                }
+                                
+                                .profile-page-buttons-two {
+                                    display: flex;
+                                    font-size: 1.3em;
                                     flex-direction: column;
+                                    margin-bottom: 25px;
+                                }
+                                
+                                .profile-page-buttons-two button {
+                                    margin-bottom: 25px;
                                 }
                                 
                                 .profile-page-buttons button {
                                     margin: 25px;
                                 }
                                 
-                                .profile-page-buttons button:hover {
+                                .profile-page-buttons-two button:hover {
                                     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
                                     background-repeat: no-repeat;
                                 }
@@ -465,4 +479,24 @@
                                 
                                 .create-text button {
                                     border: none;
+                                }
+                                
+                                .text {
+                                    width: 1100px;
+                                    margin-left: 160px;
+                                    margin-top: 50px;
+                                    text-align: justify;
+                                    line-height: 35px;
+                                }
+                                
+                                .first-text {
+                                    /* display: inline; */
+                                    font-size: 40px;
+                                }
+                                
+                                .comment-text {
+                                    margin: 0 0 25px 25px;
+                                    max-width: 438px;
+                                    word-wrap: break-word;
+                                    line-height: 25px;
                                 }

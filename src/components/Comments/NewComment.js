@@ -16,13 +16,13 @@ return (
       <div className='comment-section'>
         <p>Comments:</p>
         <form onSubmit={props.handleFormSubmit}>
-          <input
-          className="textarea"
-            type="text"
-            name="text"
-            value={props.text}
+          <textarea             
+            value={props.text} 
+            name='text'           
             onChange={props.handleChange}
-          />
+            cols={40} rows={10}
+            />
+            
           <input className = 'create-article-button' type="submit" value="Post"/>
         </form>
         </div>

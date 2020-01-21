@@ -13,8 +13,6 @@ class Profile extends Component {
 
 
 
-
-
     componentDidMount() {
         authService
             .getUser()
@@ -27,7 +25,8 @@ class Profile extends Component {
 
 
     render() {    
-        console.log(this.props);
+        console.log('the params',this.props.user);
+
         var baseURL = process.env.REACT_APP_API_URL + '/articles'
 
         
@@ -37,7 +36,7 @@ class Profile extends Component {
                 <div>
                 <h1> {this.state.currentUser.username} </h1>
 
-                <div className="profile-page-buttons">
+                <div className="profile-page-buttons-two">
                 <Link to={`/profile/settings`}><button>Settings</button></Link>
             <Link to={`/profile/create-article`}><button>Write new article</button></Link>
             </div>
