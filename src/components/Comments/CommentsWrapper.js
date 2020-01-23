@@ -32,8 +32,6 @@ export default class CommentsWrapper extends Component {
   };
 
   render() {
-    //   console.log(this.state.comments)
-    console.log("S T A T E", this.props.comments);
 
     return (
       <div>

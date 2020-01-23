@@ -8,13 +8,11 @@ class articleDetail extends Component {
     articleDetail: {}
   };
 
-  deleteArticle=()=> {
+  deleteArticle = () => {
     const { id } = this.props.match.params;
     articleService.deleteArticle(id)
       .then(()=> {this.props.history.push('/profile')})
   }
-  
-
 
   scoreHandler = value => {
     const { id } = this.props.match.params;
@@ -42,9 +40,11 @@ class articleDetail extends Component {
 
 
   render() {
+
+
+    console.log('user and article ', this.props.match.params.id, this.props.user);
+    
     const { isLoggedin } = this.props;
-    console.log(this.state.articleDetail);
-    console.log("my props",this.props);
 
 const date = this.state.articleDetail.created_at; 
 
@@ -72,8 +72,6 @@ if(monthInt == 12) {var newMonth = 'december'}
 const formattedTime = day + ' ' + newMonth + ' ' + year;
 
     return (
-      
-
 
       <div>
         <div className='article-top preview-pic'>
@@ -120,12 +118,15 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
         </div>
         </div>
 
+        <button onClick={()=>{this.deleteArticle()}}>Delete</button>
+
         <CommentsWrapper
           comments={this.state.articleDetail.comments}
           articleId={this.state.articleDetail}
           updateState={this.updateState}
         />
-        <button onClick={this.deleteArticle()}>Delete</button>
+
+
 
           </div>
           ) : (
@@ -148,7 +149,6 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
           articleId={this.state.articleDetail}
           updateState={this.updateState}
         />
-        <button onClick={this.deleteArticle()}>Delete</button>
 
         </div>
 
@@ -162,3 +162,7 @@ const formattedTime = day + ' ' + newMonth + ' ' + year;
 
 
 export default withAuth(articleDetail);
+
+
+
+

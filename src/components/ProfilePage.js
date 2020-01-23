@@ -25,7 +25,7 @@ class Profile extends Component {
 
 
     render() {    
-        console.log('the params',this.props.user);
+        console.log('the params',this.props.match);
 
         var baseURL = process.env.REACT_APP_API_URL + '/articles'
 
@@ -46,6 +46,7 @@ class Profile extends Component {
                          this.state.currentUserArticles.map((obj) => {
                         return (
                             <Link to={`/articles/${obj._id}`}>
+
                             <div className="article-preview-profile"> 
                            
                             <div className='profile-pic-list'>
@@ -56,11 +57,12 @@ class Profile extends Component {
                             <p className='profile-articles-title'> {obj.title} </p>
                             <p className='profile-articles-description'> {obj.description} </p>
                             <p> #{obj.topic} </p>
+
                             </div>
 
 
                             </div>
-                                </Link>                    
+                                </Link>      
 
                         )
                         } )
