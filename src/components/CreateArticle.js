@@ -74,7 +74,7 @@ export default class CreateArticle extends Component {
 
           <label>Topic:</label>
 
-          <select name="topic">
+          {/* <select name="topic">
     <option name="topic" value='politics'>politics</option>
     <option name="topic" value={topic} onChange={this.handleChange}>future</option>
     <option name="topic" value={topic} onChange={this.handleChange}>technology</option>
@@ -84,15 +84,15 @@ export default class CreateArticle extends Component {
     <option name="topic" value={topic} onChange={this.handleChange}>design</option>
     <option name="topic" value={topic} onChange={this.handleChange}>culture</option>
     
-          </select>
+          </select> */}
 
 
-            {/* <label>Topic:</label>
+            <label>Topic:</label>
             <input 
               type="text" 
               name="topic" 
               value={topic} 
-              onChange={this.handleChange}/> */}
+              onChange={this.handleChange}/>
 
 
 
